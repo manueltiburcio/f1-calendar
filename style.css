@@ -1,19 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,300;1,400&display=swap");
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(45deg, #6ac1c5, #bda5ff);
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  background: #f1fbff;
 }
 
-#calendar {
-  position: absolute;
-  width: 80%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.calendar {
+  padding: 20px 40px;
+}
+
+.months-container {
+  justify-content: center;
+  gap: 40px;
+}
+
+.calendar .months-container .month-container {
+  background: #fff;
+  padding: 20px;
+  min-width: 280px;
+  box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.calendar table.month th.month-title {
+  color: #5a8990;
+  font-size: 1.9em;
+  font-family: "Merriweather", sans-serif;
+  font-weight: 400;
+}
+
+/* table.month td:first-child{
+color: #f
+} */
+
+.calendar table.month td.day .day-content {
+  padding: 6px 8px;
+}
+
+.calendar table.month th.day-header {
+  color: #777;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+.month tr td {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #777;
+}
+
+table.month td.day .day-content:hover {
+  background: #f75c90;
+  color: #fff;
+}
+
+.calendar .calendar-header {
+  border: none;
+}
+
+.calendar .calendar-header table th:hover {
+  background: transparent;
+}
+
+.calendar .calendar-header .year-title {
+  font-size: 3em;
+  font-family: "Merriweather", sans-serif;
+}
+
+.calendar .calendar-header .year-neighbor,
+.calendar .calendar-header .year-neighbor2 {
+  opacity: 0.2;
+  font-size: 2.25em;
 }
