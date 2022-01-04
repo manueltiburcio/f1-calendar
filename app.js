@@ -1,3 +1,6 @@
+const months = document.querySelectorAll('.month-container');
+console.log(months);
+
 var requestOptions = {
     method: 'GET',
     redirect: 'follow',
@@ -11,7 +14,16 @@ var requestOptions = {
         console.log(data);
         console.log(data.MRData.RaceTable.Races.length);
         console.log(data.MRData.RaceTable.Races[0].date);
+        const races = data.MRData.RaceTable.Races;
+        races.forEach(race => {
+            console.log(race.date);
+        });
+
+        
     }
+
+
+
     // fetch(url, requestOptions)
     //   .then(response => response.text())
     //   .then(data => {
@@ -19,9 +31,9 @@ var requestOptions = {
     //   })
     //   .catch(error => console.log('error', error));
   
-  
+   
     getSchedule();
-      
+    
 
 
 

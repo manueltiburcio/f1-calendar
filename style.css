@@ -12,7 +12,22 @@ body {
   line-height: 1.5;
   font-family: "Nunito", sans-serif;
   font-weight: 300;
-  background: #f1fbff;
+  background: #fff;
+}
+.nav {
+  background-color: #e10600;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+.nav-title {
+  font-weight: 600;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+.nav-subtitle {
+  font-size: 0.9rem;
 }
 
 .calendar {
@@ -32,7 +47,7 @@ body {
 }
 
 .calendar table.month th.month-title {
-  color: #5a8990;
+  color: #e10600;
   font-size: 1.9em;
   font-family: "Merriweather", sans-serif;
   font-weight: 400;
@@ -58,7 +73,12 @@ color: #f
 }
 
 table.month td.day .day-content:hover {
-  background: #f75c90;
+  background: #e10600;
+  color: #fff;
+}
+
+table.month td.day .day-content.active {
+  background: #e10600;
   color: #fff;
 }
 
