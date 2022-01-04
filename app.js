@@ -1,18 +1,30 @@
-// var requestOptions = {
-//     method: 'GET',
-//     redirect: 'follow'
-// };
+var requestOptions = {
+    method: 'GET',
+    redirect: 'follow',
+};
+
+    const url = "http://ergast.com/api/f1/2022.json";
+
+    async function getSchedule() {
+        const response = await fetch(url, requestOptions);
+        const data = await response.json();
+        console.log(data);
+        console.log(data.MRData.RaceTable.Races.length);
+        console.log(data.MRData.RaceTable.Races[0].date);
+    }
+    // fetch(url, requestOptions)
+    //   .then(response => response.text())
+    //   .then(data => {
+    //       console.log(data)
+    //   })
+    //   .catch(error => console.log('error', error));
   
-//   fetch("http://ergast.com/api/f1/2021", requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
+  
+    getSchedule();
+      
 
-//     const data = result.json;
 
-//     console.log(data);
 
-new Calendar(document.querySelector('.calendar'));
 
 
 
