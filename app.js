@@ -6,7 +6,7 @@ var requestOptions = {
 };
 
 const url = "http://ergast.com/api/f1/2022.json";
-
+const modal = document.querySelector(".modal");
  async function getSchedule() {
         const response = await fetch(url, requestOptions);
         const data = await response.json();
@@ -14,13 +14,15 @@ const url = "http://ergast.com/api/f1/2022.json";
         const months = document.querySelectorAll('.month-container');
 
         const races = data.MRData.RaceTable.Races;
+        console.log(races)
         
         races.forEach(race => {
 
             let month = race.date.slice([5],[7]) - 1// get month of the race
-            let day = race.date.slice([8],[10]) // get day of the race
+            let day = race.date.slice([8],[10]) - 1 // get day of the race
             const days = document.querySelectorAll('.day-content');
 
+            console.log(race.raceName)
             console.log(month);
             console.log(day);
 
@@ -35,6 +37,7 @@ const url = "http://ergast.com/api/f1/2022.json";
                 
                       day_365 += parseInt(day);
                       days[day_365].classList.add("active");
+                      days[day_365].classList.add("open");
                       
                       
                 }else{
@@ -44,11 +47,39 @@ const url = "http://ergast.com/api/f1/2022.json";
                 }
              
             }
-            console.log(day_365);
+            
+
+
+             modal.innerHTML = 
+              `<h1>${race.raceName}</h1>
+                <p>${race.time}</p>
+                <button id="close">Close</button>
+              
+              `;
+              
+
+            console.log(modal.innerHTML);
             
         });
-      
-      
+
+       
+        const modalContainer = document.getElementById('modal-container');
+        const close = document.getElementById('close');
+        
+
+        
+        document.querySelectorAll('.open').forEach(item => {
+            item.addEventListener('click', event => {
+                modalContainer.classList.add('show');
+            })
+          })
+
+
+        close.addEventListener('click',() => {
+            modalContainer.classList.remove('show');
+        });
+
+
        
         
         
@@ -56,19 +87,30 @@ const url = "http://ergast.com/api/f1/2022.json";
 
 getSchedule();
 
+// Modal
+// let open = document.querySelectorAll('.open');
+
+
+// function openModal(){
+//     modalContainer.classList.add('show');
+
+// }
+
+// let open = document.querySelectorAll(".open");
+
+// open.forEach(function(elem) {
+//     elem.addEventListener("click", function() {
+//         modalContainer.classList.add('show');
+//     });
+// });
+
+// for (var i = 0 ; i < open.length; i++) {
+//     open[i].addEventListener('click' , openModal, false ) ; 
+//  }
 
 
 
 
-
-    // fetch(url, requestOptions)
-    //   .then(response => response.text())
-    //   .then(data => {
-    //       console.log(data)
-    //   })
-    //   .catch(error => console.log('error', error));
-  
-   
     
 
 
