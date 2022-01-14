@@ -90,6 +90,11 @@ table.month td.day .day-content.active {
   color: #fff;
 }
 
+.active{
+  background: #e10600;
+  color: #fff;
+}
+
 .calendar .calendar-header {
   border: none;
 }
