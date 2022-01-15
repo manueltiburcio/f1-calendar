@@ -14,7 +14,7 @@ const modal = document.querySelector(".modal");
         const months = document.querySelectorAll('.month-container');
 
         const races = data.MRData.RaceTable.Races;
-        console.log(races)
+        //console.log(races)
         
         races.forEach(race => {
 
@@ -22,9 +22,9 @@ const modal = document.querySelector(".modal");
             let day = race.date.slice([8],[10]) - 1 // get day of the race
             const days = document.querySelectorAll('.day-content');
 
-            console.log(race.raceName)
-            console.log(month);
-            console.log(day);
+            //console.log(race.raceName)
+            //console.log(month);
+            //console.log(day);
 
             let day_365 = 0; // Translates month - day format to 365 date format
 
@@ -47,45 +47,89 @@ const modal = document.querySelector(".modal");
                 }
              
             }
-            
 
 
-             modal.innerHTML = 
-              `<h1>${race.raceName}</h1>
-                <p>${race.time}</p>
-                <button id="close">Close</button>
+        // document.querySelectorAll('.open').forEach(item => 
+        //         item.addEventListener('click', event => {
+        //           console.log(event.target)
+        //      })
+        //    )
+
+            //  modal.innerHTML = 
+            //   `<h1> ${race.raceName}</h1>
+            //     <p>${race.time}</p>
+            //     <button id="close">Close</button>
               
-              `;
+            //   `;
               
 
-            console.log(modal.innerHTML);
+            //console.log(modal.innerHTML);
             
         });
 
-       
-        const modalContainer = document.getElementById('modal-container');
-        const close = document.getElementById('close');
+        modal.innerHTML = 
+        ` <h1>definition</h1>
+          <h1>definition</h1>
+          <button id="close">Close</button>
         
+        `;
 
+        const modalContainer = document.getElementById('modal-container');
+        let close = document.getElementById('close');
         
         document.querySelectorAll('.open').forEach(item => {
             item.addEventListener('click', event => {
                 modalContainer.classList.add('show');
-            })
-          })
 
+                let clickedDay = parseInt(event.target.innerHTML);
+                console.log(clickedDay);
+
+                let clickedMonth = parseInt(event.target.parentNode.parentNode.parentNode.parentNode.getAttribute("data-month-id"));
+                console.log(clickedMonth);
+
+
+                races.forEach(race => {
+
+                    let monthLookUp = race.date.slice([5],[7]) - 1// get month of the race
+                    let dayLookUp = race.date.slice([8],[10])// get day of the race
+
+                    console.log("clickedDay " + clickedDay);
+                    console.log("clickedMonth " + clickedMonth);
+
+                    console.log("monthLookUp" + monthLookUp);
+                    console.log("dayLookUp "+ dayLookUp);
+
+
+                    if ( (monthLookUp == clickedMonth) && (dayLookUp == clickedDay) ){
+                        modal.getElementsByTagName('h1')[0].innerHTML = race.raceName;
+                        modal.getElementsByTagName('h1')[1].innerHTML = race.time;
+                    }
+
+
+                // modal.getElementsByTagName('h1')[0].innerHTML = clickedDay;
+                // modal.getElementsByTagName('h1')[1].innerHTML = clickedMonth;
+                
+            });
+
+            
+          })
+         
 
         close.addEventListener('click',() => {
             modalContainer.classList.remove('show');
-        });
-
-
-       
+        });    
         
-        
+});
+
 }
 
+
 getSchedule();
+
+
+
+
+ 
 
 // Modal
 // let open = document.querySelectorAll('.open');
