@@ -5,7 +5,7 @@ var requestOptions = {
     redirect: 'follow',
 };
 
-const url = "http://ergast.com/api/f1/2022.json";
+const url = "https://ergast.com/api/f1/2022.json";
 const modal = document.querySelector(".modal");
  async function getSchedule() {
         const response = await fetch(url, requestOptions);
