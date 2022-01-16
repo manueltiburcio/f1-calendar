@@ -57,13 +57,22 @@ body {
   opacity: 1;
 }
 
+.calendar .calendar-header .year-neighbor2, .year-neighbor {
+  opacity: 0.2;
+  font-size: 2.25em;
+  z-index: -200;
+  position: relative;
+}
+
 .modal {
+  position: relative;
   background-color: #fff;
   border-radius: 5px;
   padding: 30px 50px;
   width: 600px;
   max-width: 100%;
   text-align: center;
+  z-index: 200;
 }
 
 .modal h1 {
@@ -84,6 +93,11 @@ button {
   font-size: 14px;
   margin-top: 5px;
   padding: 10px 25px;
+}
+img {
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
 }
 
 .calendar {

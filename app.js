@@ -7,6 +7,79 @@ var requestOptions = {
 
 const url = "https://ergast.com/api/f1/2022.json";
 const modal = document.querySelector(".modal");
+
+//-----------// Track Images //-----------//
+var imgArray = new Array();
+
+imgArray[0] = new Image();
+imgArray[0].src = 'images/1.png';
+
+imgArray[1] = new Image();
+imgArray[1].src = 'images/2.png';
+
+imgArray[2] = new Image();
+imgArray[2].src = 'images/3.png';
+
+imgArray[3] = new Image();
+imgArray[3].src = 'images/4.png';
+
+imgArray[4] = new Image();
+imgArray[4].src = 'images/5.png';
+
+imgArray[5] = new Image();
+imgArray[5].src = 'images/6.png';
+
+imgArray[6] = new Image();
+imgArray[6].src = 'images/7.png';
+
+imgArray[7] = new Image();
+imgArray[7].src = 'images/8.png';
+
+imgArray[8] = new Image();
+imgArray[8].src = 'images/9.png';
+
+imgArray[9] = new Image();
+imgArray[9].src = 'images/10.png';
+
+imgArray[10] = new Image();
+imgArray[10].src = 'images/11.png';
+
+imgArray[11] = new Image();
+imgArray[11].src = 'images/12.png';
+
+imgArray[12] = new Image();
+imgArray[12].src = 'images/13.png';
+
+imgArray[13] = new Image();
+imgArray[13].src = 'images/14.png';
+
+imgArray[14] = new Image();
+imgArray[14].src = 'images/15.png';
+
+imgArray[15] = new Image();
+imgArray[15].src = 'images/16.png';
+
+imgArray[16] = new Image();
+imgArray[16].src = 'images/17.png';
+
+imgArray[17] = new Image();
+imgArray[17].src = 'images/18.png';
+
+imgArray[18] = new Image();
+imgArray[18].src = 'images/19.png';
+
+imgArray[19] = new Image();
+imgArray[19].src = 'images/20.png';
+
+imgArray[20] = new Image();
+imgArray[20].src = 'images/21.png';
+
+imgArray[21] = new Image();
+imgArray[21].src = 'images/22.png';
+
+imgArray[22] = new Image();
+imgArray[22].src = 'images/23.png';
+
  async function getSchedule() {
         const response = await fetch(url, requestOptions);
         const data = await response.json();
@@ -14,7 +87,7 @@ const modal = document.querySelector(".modal");
         const months = document.querySelectorAll('.month-container');
 
         const races = data.MRData.RaceTable.Races;
-        //console.log(races)
+        console.log(races)
         
         races.forEach(race => {
 
@@ -69,7 +142,9 @@ const modal = document.querySelector(".modal");
 
         modal.innerHTML = 
         ` <h1>definition</h1>
-          <h1>definition</h1>
+          <img src="">
+          <p>Track Time:</p>
+          <p>definition</p>
           <button id="close">Close</button>
         
         `;
@@ -85,6 +160,7 @@ const modal = document.querySelector(".modal");
                 console.log(clickedDay);
 
                 let clickedMonth = parseInt(event.target.parentNode.parentNode.parentNode.parentNode.getAttribute("data-month-id"));
+                
                 console.log(clickedMonth);
 
 
@@ -93,16 +169,21 @@ const modal = document.querySelector(".modal");
                     let monthLookUp = race.date.slice([5],[7]) - 1// get month of the race
                     let dayLookUp = race.date.slice([8],[10])// get day of the race
 
-                    console.log("clickedDay " + clickedDay);
-                    console.log("clickedMonth " + clickedMonth);
+                    //console.log("clickedDay " + clickedDay);
+                    //console.log("clickedMonth " + clickedMonth);
 
-                    console.log("monthLookUp" + monthLookUp);
-                    console.log("dayLookUp "+ dayLookUp);
+                    //console.log("monthLookUp" + monthLookUp);
+                    //console.log("dayLookUp "+ dayLookUp);
 
 
                     if ( (monthLookUp == clickedMonth) && (dayLookUp == clickedDay) ){
                         modal.getElementsByTagName('h1')[0].innerHTML = race.raceName;
-                        modal.getElementsByTagName('h1')[1].innerHTML = race.time;
+                        let raceImg = parseInt(race.round) - 1;
+                        console.log("race.round " + race.round);
+                        console.log("race photo " + imgArray[raceImg]);
+
+                        modal.getElementsByTagName('img')[0].src = imgArray[raceImg].src;
+                        modal.getElementsByTagName('p')[1].innerHTML = race.time.slice([0],[5]);
                     }
 
 
