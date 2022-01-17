@@ -143,7 +143,9 @@ imgArray[22].src = 'images/23.png';
         modal.innerHTML = 
         ` <h1>definition</h1>
           <img src="">
-          <p>Track Time:</p>
+          <h4>My Time:</h4>
+          <p>Coming soon</p>
+          <h4>Track Time:</h4>
           <p>definition</p>
           <button id="close">Close</button>
         
